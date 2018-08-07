@@ -1,6 +1,6 @@
 /** An SLList is a list of integers, which hides the terrible truth
    * of the nakedness within. */
-public class SLList {	
+public class SLList_hug {	
 	private static class IntNode {
 		public int item;
 		public IntNode next;
@@ -8,7 +8,7 @@ public class SLList {
 		public IntNode(int i, IntNode n) {
 			item = i;
 			next = n;
-			System.out.println(size);
+			//System.out.println(size);
 		}
 	} 
 
@@ -17,21 +17,22 @@ public class SLList {
 	private int size;
 
 	private static void lectureQuestion() {
-		SLList L = new SLList();
-		IntNode n = IntNode(5, null);
+		SLList_hug L = new SLList_hug();
+		IntNode n = new IntNode(5, null);
 	}
 
 	/** Creates an empty SLList. */
-	public SLList() {
+	public SLList_hug() {
 		sentinel = new IntNode(63, null);
 		size = 0;
 	}
 
-	public SLList(int x) {
+	public SLList_hug(int x) {
 		sentinel = new IntNode(63, null);
 		sentinel.next = new IntNode(x, null);
 		size = 1;
 	}
+
 
  	/** Adds x to the front of the list. */
  	public void addFirst(int x) {
@@ -57,6 +58,25 @@ public class SLList {
 
  		p.next = new IntNode(x, null);
  	}
+
+ 	/** Delet the first element of the list 
+ 	Make sure the three Invariants are properly maintained
+ 	
+ 	The sentinel reference always points to a sentinel node.
+    The front item (if it exists), is always at sentinel.next.item.
+    The size variable is always the total number of items that have been added.*/
+ 	public void deleteFirst(){
+ 		if(sentinel.next == null) {   // empty list
+ 			System.out.println("WARN : The SLList is empty!"); 
+ 		} else if(sentinel.next.next == null) { // single element in the list
+ 			sentinel.next = null;
+ 			size--;
+ 		}else {
+ 			sentinel.next = sentinel.next.next;
+ 			size--;
+ 			}
+ 	}
+ 	
  	
  	/** Returns the size of the list. */
  	public int size() {
@@ -65,7 +85,12 @@ public class SLList {
 
 	public static void main(String[] args) {
  		/* Creates a list of one integer, namely 10 */
- 		SLList L = new SLList();
+ 		SLList_hug L = new SLList_hug();
  		L.addLast(20);
+ 		L.addLast(30);
+ 		L.addLast(40);
+ 		L.deleteFirst();
  		System.out.println(L.size());
  	}
+
+}
