@@ -33,6 +33,20 @@ public class SLList_hug {
         size = 1;
     }
 
+    public SLList_hug(int[] x) {
+        sentinel = new IntNode(63, null);
+        IntNode p = sentinel;
+        size=0;
+        for(int i=0; i< x.length; i++) {
+            p.next = new IntNode(x[i], null);
+            p=p.next;
+            size++;
+        }
+        //size = x.length;  
+        //if size is inside the for loop the it has to increment each time
+        // if size is  outside, it can be tied to a fixed value.
+    }
+
 
     /** Adds x to the front of the list. */
     public void addFirst(int x) {
@@ -91,6 +105,10 @@ public class SLList_hug {
         L.addLast(40);
         L.deleteFirst();
         System.out.println(L.size());
+
+        int[] m = new int[] {1,2,3,4,5};
+        SLList_hug M = new SLList_hug(m);
+        System.out.println(M.size());
     }
 
 }
