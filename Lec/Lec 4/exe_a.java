@@ -1,3 +1,6 @@
+/**This files implements the function of add adjacent elements of a list 
+*/
+
 public class exe_a { 
     public int first; 
     public exe_a rest;
